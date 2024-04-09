@@ -19,11 +19,13 @@ REGISTRY = staging-k8s.gcr.io
 TAG = v0.1.12
 
 deps:
-	go get github.com/tools/godep
+	go install github.com/tools/godep@latest
 
+#build: clean deps
 build: clean deps
-	$(ENVVAR) godep go test ./...
-	$(ENVVAR) godep go build -o proxy
+#	$(ENVVAR) godep go test ./...
+#	$(ENVVAR) godep go build -o proxy
+	$(ENVVAR) go build -o proxy
 
 container: build
 	docker build --pull --no-cache -t ${REGISTRY}/metadata-proxy:$(TAG) .
