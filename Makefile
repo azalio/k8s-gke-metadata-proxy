@@ -15,7 +15,7 @@
 all: build
 
 ENVVAR = GOOS=linux GOARCH=amd64 CGO_ENABLED=0
-REGISTRY = staging-k8s.gcr.io
+REGISTRY = azalio
 TAG = v0.1.12
 
 deps:
@@ -31,7 +31,7 @@ container: build
 	docker build --pull --no-cache -t ${REGISTRY}/metadata-proxy:$(TAG) .
 
 push: container
-	gcloud docker -- push ${REGISTRY}/metadata-proxy:$(TAG)
+	docker push ${REGISTRY}/metadata-proxy:$(TAG)
 
 clean:
 	rm -f proxy

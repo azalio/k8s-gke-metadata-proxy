@@ -13,7 +13,7 @@
 # limitations under the License.
 
 FROM gcr.io/distroless/static:latest
-LABEL maintainer "ihmccreery@google.com"
+LABEL maintainer "azalio@azalio.net"
 
 # Place our wrapper script into the image.
 COPY proxy /

@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: azalio/metadata-proxy
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v0.1.12"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -31,7 +31,8 @@ podLabels: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  privileged: true
   # capabilities:
   #   drop:
   #   - ALL

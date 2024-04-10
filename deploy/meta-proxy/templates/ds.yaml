@@ -24,8 +24,12 @@ spec:
 {{- end }}
       containers:
       - name: {{ .Chart.Name }}
-        image: "{{ .Values.image.repo }}:{{ .Values.image.tag }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ default "" .Values.image.pullPolicy | quote }}
+        {{- with .Values.securityContext }}
+        securityContext:
+{{ toYaml . | indent 10 }}
+        {{- end }}
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         {{- if .Values.args }}
@@ -50,9 +54,5 @@ spec:
       {{- end }}
       {{- with .Values.dnsConfig }}
       dnsConfig:
-{{ toYaml . | indent 8 }}
-      {{- end }}
-      {{- with .Values.podSecurityContext }}
-      securityContext:
 {{ toYaml . | indent 8 }}
       {{- end }}

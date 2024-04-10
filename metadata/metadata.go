@@ -20,6 +20,7 @@ var (
 		regexp.MustCompile("/computeMetadata/v1beta1/instance/service-accounts/.+/identity"),
 		regexp.MustCompile("/computeMetadata/v1/instance/service-accounts/.+/identity"),
 		regexp.MustCompile("/computeMetadata/v1/instance/service-accounts/.+/token"),
+		regexp.MustCompile("/computeMetadata/v1/instance/attributes/etc-kubernetes-bootstrap-kubeconfig-conf"),
 	}
 	recursiveWhitelistPatterns = []*regexp.Regexp{
 		// ?recursive=true on the instance service account metadata returns
